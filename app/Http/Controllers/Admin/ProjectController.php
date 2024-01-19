@@ -34,7 +34,7 @@ class ProjectController extends Controller
         } else if (!empty($request->query('technologies'))) {
             $projects = Project::where('technologies', 'like', '%' . $request->query('technologies') . '%')->get();
         } else {
-            $projects = Project::where('user_id', $currentUserId)->paginate(1);
+            $projects = Project::where('user_id', $currentUserId)->paginate(5);
         }
         return view('admin.projects.index', compact('projects', 'technologies', 'request'));
     }
