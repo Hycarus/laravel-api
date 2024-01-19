@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ComicController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\TechnologyController;
+use App\Http\Controllers\ExpensesController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/expenses', [ExpensesController::class, 'index'])->name('expenses');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 

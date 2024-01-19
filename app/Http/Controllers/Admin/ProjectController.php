@@ -33,7 +33,9 @@ class ProjectController extends Controller
             $search = $request->query('search');
             $projects = Project::where('title', 'like', '%' . $search . '%')->get();
         } else if (!empty($request->query('technologies'))) {
-            $projects = Project::join('project_technology', 'projects.id', '=', 'project_technology.project_id')->join('technologies', 'technologies.id', '=', 'project_technology.technology_id')->where('technologies.name', 'like', '%' . $request->query('technologies') . '%')->get();
+            $projects = Project::whereHas('technologies', function ($query) use ($request) {
+                $query->where('technologies.name', 'like', '%' . $request->query('technologies') . '%');
+            })->get();
         } else {
             $projects = Project::where('user_id', $currentUserId)->paginate(5);
         }
@@ -76,11 +78,11 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Project $project, Technology $technology)
+    public function show(Project $project)
     {
         $currentUserId = Auth::id();
         if ($currentUserId == $project->user_id || $currentUserId == 1) {
-            return view('admin.projects.show', compact('project', 'technology'));
+            return view('admin.projects.show', compact('project'));
         }
         abort(403);
     }
