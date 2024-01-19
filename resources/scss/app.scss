@@ -1,0 +1,65 @@
+@use "./partials/variables" as *;
+
+$fa-font-path: "../fonts/webfonts" !default;
+
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+
+@import "~bootstrap/scss/bootstrap";
+
+h1 {
+    color: $text-color;
+}
+.my-logo-container {
+    width: 90px !important;
+}
+.my-navbar {
+    background: linear-gradient(90deg, hsla(220, 6%, 28%, 1) 41%, hsla(31, 34%, 70%, 1) 100%);
+    height: 100px;
+}
+#app {
+    width: 100%;
+    height: 100vh;
+}
+.side-bar {
+    width: 200px;
+    height: calc(100vh - 100px);
+    overflow-y: hidden;
+    background: linear-gradient(180deg, hsla(220, 6%, 28%, 1) 41%, hsla(31, 34%, 70%, 1) 100%);
+}
+#main {
+    width: 100%;
+    height: calc(100vh - 100px);
+}
+.main-dashboard {
+    width: calc(100% - 200px);
+    height: calc(100vh - 100px);
+    background-color: $white;
+    overflow: auto;
+}
+
+.list-group-item {
+    border: none !important;
+    background-color: transparent !important;
+}
+
+#projects {
+    height: 500px;
+}
+
+.square {
+    width: 50px;
+}
+.my-accordion {
+    background-color: transparent !important;
+    --bs-accordion-bg: transparent !important;
+    --bs-accordion-border-color: none !important;
+    color: white !important;
+    border: none !important;
+    text-decoration: none;
+}
+.accordion-button:after {
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important;
+}
