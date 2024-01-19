@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Category;
 use App\Models\Technology;
 
+
 class ProjectController extends Controller
 {
     /**
@@ -26,16 +27,17 @@ class ProjectController extends Controller
         } else {
             $projects = Project::where('user_id', $currentUserId)->paginate(1);
         }
-        $technologies = config('technologies.key');
+        $technologies = Technology::all();
 
         if (!empty($request->query('search'))) {
             $search = $request->query('search');
             $projects = Project::where('title', 'like', '%' . $search . '%')->get();
         } else if (!empty($request->query('technologies'))) {
-            $projects = Project::where('technologies', 'like', '%' . $request->query('technologies') . '%')->get();
+            $projects = Project::join('project_technology', 'projects.id', '=', 'project_technology.project_id')->join('technologies', 'technologies.id', '=', 'project_technology.technology_id')->where('technologies.name', 'like', '%' . $request->query('technologies') . '%')->get();
         } else {
             $projects = Project::where('user_id', $currentUserId)->paginate(5);
         }
+
         return view('admin.projects.index', compact('projects', 'technologies', 'request'));
     }
 

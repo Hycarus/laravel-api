@@ -6,10 +6,10 @@
             <form action="{{ route('admin.projects.index') }}" method="GET">
                 <select name="technologies" id="technologies">
                     <option value="">All</option>
-                    @for ($i = 0; $i < count($technologies); $i++)
-                        <option @if ($technologies[$i]['name'] === $request->technologies) selected @endif value="{{ $technologies[$i]['name'] }}">
-                            {{ $technologies[$i]['name'] }}</option>
-                    @endfor
+                    @foreach ($technologies as $technology)
+                        <option @if ($technology->name === $request->technologies) selected @endif value="{{ $technology->name }}">
+                            {{ $technology->name }}</option>
+                    @endforeach
                 </select>
                 <button class="btn btn-primary" type="submit">Filter</button>
             </form>
@@ -39,7 +39,7 @@
                 </div>
             </div>
         @endforeach
-        {{ $projects->links('vendor.pagination.bootstrap-5') }}
+        {{-- {{ $projects->links('vendor.pagination.bootstrap-5') }} --}}
     </section>
     @include('partials.modal_delete')
 @endsection

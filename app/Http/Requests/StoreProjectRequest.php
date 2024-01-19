@@ -24,7 +24,7 @@ class StoreProjectRequest extends FormRequest
         return [
             'title' => 'required|min:3|max:200|unique:projects',
             'body' => 'nullable',
-            'image' => 'nullable|image|max:5120',
+            'image' => 'nullable|image|max:10240',
             'technologies' => 'nullable|exists:technologies,id',
             'category_id' => 'nullable|exists:categories,id',
         ];
