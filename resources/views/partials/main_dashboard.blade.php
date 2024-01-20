@@ -16,7 +16,7 @@
             {{ $item }}
         </div>
     @endforeach
-    <div class="container mt-5">
+    <div class="mt-5">
         <div class="row ">
             <div class="col-8">
                 <canvas id="myChart"></canvas>
@@ -60,14 +60,38 @@
                     label: 'Technologies',
                     data: datas,
                     borderWidth: 5,
-                    backgroundColor: '#9f9080ff'
+                    backgroundColor: ['#9f9080ff', '#cdb49aff', '#535356ff']
                 }, ]
             },
 
             options: {
+                indexAxis: 'y',
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Most used technologies',
+                        color: '#535356ff',
+                        font: {
+                            size: 30,
+                            weight: 'bold'
+                        },
+                        padding: {
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            bottom: 0
+                        }
+                    }
+                },
                 scales: {
+                    x: {
+                        beginAtZero: false,
+                        ticks: {
+                            align: 'end',
+                        }
+                    },
                     y: {
-                        beginAtZero: true
+                        beginAtZero: true,
                     }
                 }
             },
@@ -87,9 +111,16 @@
             },
 
             options: {
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {}
+                    }
+                },
                 scales: {
                     y: {
-                        beginAtZero: true
+                        beginAtZero: true,
+
                     }
                 }
             },

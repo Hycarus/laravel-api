@@ -39,7 +39,7 @@
                 </div>
             </div>
         @endforeach
-        {{-- {{ $projects->links('vendor.pagination.bootstrap-5') }} --}}
+        {{ $projects->links('vendor.pagination.bootstrap-5') }}
     </section>
     @include('partials.modal_delete')
 @endsection

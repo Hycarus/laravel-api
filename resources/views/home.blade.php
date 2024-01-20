@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
-    <main id="main" class="d-flex">
-        <section class="main-dashboard">
+    <main id="main">
+        <section>
             @include('partials.main_dashboard')
         </section>
     </main>
