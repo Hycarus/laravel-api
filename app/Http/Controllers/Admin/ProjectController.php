@@ -23,9 +23,9 @@ class ProjectController extends Controller
     {
         $currentUserId = Auth::id();
         if ($currentUserId == 1) {
-            $projects = Project::paginate(1);
+            $projects = Project::paginate(5);
         } else {
-            $projects = Project::where('user_id', $currentUserId)->paginate(1);
+            $projects = Project::where('user_id', $currentUserId)->paginate(5);
         }
         $technologies = Technology::all();
 
@@ -64,7 +64,7 @@ class ProjectController extends Controller
         $user_id = Auth::id();
         $formData['user_id'] = $user_id;
         if ($request->hasFile('image')) {
-            $img_path = Storage::put('uploads', $formData['image']);
+            $img_path = Storage::put('images', $formData['image']);
             $formData['image'] = $img_path;
         }
         $project = Project::create($formData);
@@ -118,7 +118,7 @@ class ProjectController extends Controller
             if ($project->image) {
                 Storage::delete($project->image);
             }
-            $img_path = Storage::put('uploads', $request->image);
+            $img_path = Storage::put('images', $request->image);
             $formData['image'] = $img_path;
         }
         $project->update($formData);
