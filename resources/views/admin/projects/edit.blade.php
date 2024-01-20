@@ -28,9 +28,9 @@
                     <img class="w-25" id="image-preview" src="{{ asset('storage/' . $project->image) }}"
                         alt="{{ $project->title }}">
                 </div>
-                <input value="{{ old('image', $project->image) }}" type="file"
-                    class="form-control @error('image') is-invalid
-                @enderror" id="image" name="image">
+                <input type="file" class="form-control @error('image') is-invalid
+                @enderror"
+                    id="image" name="image">
                 @error('image')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -55,7 +55,7 @@
                     id="category_id">
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}"
-                            {{ old('category_id', $project->category_id) == $project->category_id ? 'selected' : '' }}>
+                            {{ old('category_id', $project->category_id) == $category->id ? 'selected' : '' }}>
                             {{ $category->name }}
                         </option>
                     @endforeach
