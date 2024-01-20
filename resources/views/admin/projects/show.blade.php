@@ -1,9 +1,11 @@
 @extends('layouts.app')
 @section('content')
-    <section class="container">
+    <section class="container mb-4">
         <h1>{{ $project->title }}</h1>
+        <h4>Description:</h4>
         <p>{!! $project->body !!}</p>
-        <p>Category:
+        <h4>Category:</h4>
+        <p>
             @if ($project->category)
                 {{ $project->category->name }}
             @else
@@ -13,6 +15,7 @@
         <div>
             <img class="w-50" src="{{ asset('storage/' . $project->image) }}" alt="{{ $project->title }}">
         </div>
+        <h4>Technologies:</h4>
         @forelse ($project->technologies as $technology)
             <div class="d-inline-block m-2 ">
                 <img class="square" src="{{ $technology['image'] }}" alt="{{ $technology['name'] }}">
@@ -20,6 +23,8 @@
         @empty
             <div>No Technologies</div>
         @endforelse
+        <h4>Link for Github:</h4>
+        <a href="{{ $project->url }}">{{ $project->title }}</a>
         <div class="d-flex mt-2 ">
             <form action="{{ route('admin.projects.destroy', $project->slug) }}" method="POST">
                 @csrf

@@ -25,15 +25,16 @@ class ProjectSeeder extends Seeder
             $newProject->slug = Str::slug($project['title'], '-');
             $newProject->image = ProjectSeeder::storeimage(__DIR__ . '/images/' . $newProject->slug . '.png', $newProject->slug);
             $newProject->technologies = ProjectSeeder::storeTechnologies($technologies, $project['technologies']);
+            $newProject->url = $project['url'];
             $newProject->save();
         }
     }
     public function storeimage($image, $title)
     {
         $url = $image;
-        $contents = file_get_contents($url);
-        // $name = Str::slug($title, '-') . '.jpg';
-        $path = 'images/' . $title . '.png';
+        $contents = file_get_contents($image);
+        $name = Str::slug($title, '-') . '.png';
+        $path = 'images/' . $name;
         Storage::put($path, $contents);
         return $path;
     }

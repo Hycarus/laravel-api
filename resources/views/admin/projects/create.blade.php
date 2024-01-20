@@ -61,6 +61,13 @@
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
+            <div class="mb-3">
+                <label class="form-label" for="url">Url:</label>
+                <input type="text" class="form-control @error('url') is-invalid @enderror" name="url" id="url">
+                @error('url')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
             <div>
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <button type="reset" class="btn btn-secondary">Reset</button>

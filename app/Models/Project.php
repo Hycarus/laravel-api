@@ -16,7 +16,8 @@ class Project extends Model
         'slug',
         'body',
         'image',
-        'category_id'
+        'category_id',
+        'url',
     ];
     public function user()
     {

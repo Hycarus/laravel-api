@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <section class="container">
+    <section class="container mb-3">
         <h1>Edit {{ $project->title }}</h1>
         <form action="{{ route('admin.projects.update', $project->slug) }}" method="POST" enctype="multipart/form-data">
             @csrf
@@ -61,6 +61,15 @@
                     @endforeach
                 </select>
                 @error('category_id')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="url">Url:</label>
+                <input type="text" class="form-control @error('url') is-invalid
+                @enderror" id="url"
+                    required name="url" value="{{ old('url', $project->url) }}">
+                @error('url')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
