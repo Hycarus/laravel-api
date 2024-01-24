@@ -39,10 +39,8 @@ class LeadController extends Controller
             ]);
         }
 
-        $newLead = new Lead();
-        $newLead->fill($data);
-        $newLead->save();
-
+        $newLead = Lead::create($data);
+        // dd($newLead);
         Mail::to('info@boolfolio.com')->send(new NewContact($newLead));
 
         return response()->json([
