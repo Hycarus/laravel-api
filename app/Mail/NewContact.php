@@ -12,13 +12,14 @@ use Illuminate\Queue\SerializesModels;
 class NewContact extends Mailable
 {
     use Queueable, SerializesModels;
+
     public $lead;
     /**
      * Create a new message instance.
      */
-    public function __construct($_lead)
+    public function __construct($lead)
     {
-        $this->lead = $_lead;
+        $this->lead = $lead;
     }
 
     /**
